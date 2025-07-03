@@ -17,6 +17,9 @@ app.use('/api/customers', customerRoutes);
 let roomRoutes = require('./routes/roomRoutes');
 app.use('/api/rooms', roomRoutes);
 
+let bookingRoutes = require('./routes/bookingRoutes');
+app.use('/api/bookings', bookingRoutes);
+
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);

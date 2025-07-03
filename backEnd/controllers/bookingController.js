@@ -1,16 +1,16 @@
 "use strict";
 let Models = require("../models");
-const getRooms = (res) => {
-  Models.Room.find({})
+const getBookings = (res) => {
+  Models.Booking.find({})
     .then((data) => res.send({ result: 200, data: data }))
     .catch((err) => {
       console.log(err);
       res.send({ result: 500, error: err.message });
     });
 };
-const createRoom = (data, res) => {
+const createBooking = (data, res) => {
   console.log(data);
-  new Models.Room(data)
+  new Models.Booking(data)
     .save()
     .then((data) => res.send({ result: 200, data: data }))
     .catch((err) => {
@@ -19,17 +19,17 @@ const createRoom = (data, res) => {
     });
 };
 
-const updateRoom = (req, res) => {
+const updateBooking = (req, res) => {
   console.log(req.body);
-  Models.Room.findByIdAndUpdate(req.params.id, req.body, { new: true })
+  Models.Booking.findByIdAndUpdate(req.params.id, req.body, { new: true })
     .then((data) => res.send({ result: 200, data: data }))
     .catch((err) => {
       console.log(err);
       res.send({ result: 500, error: err.message });
     });
 };
-const deleteRoom = (req, res) => {
-  Models.Room.findByIdAndDelete(req.params.id)
+const deleteBooking = (req, res) => {
+  Models.Booking.findByIdAndDelete(req.params.id)
     .then((data) => res.send({ result: 200, data: data }))
     .catch((err) => {
       console.log(err);
@@ -38,8 +38,8 @@ const deleteRoom = (req, res) => {
 };
 
 module.exports = {
-  getRooms,
-  createRoom,
-  updateRoom,
-  deleteRoom,
+  getBookings,
+  createBooking,
+  updateBooking,
+  deleteBooking,
 };
